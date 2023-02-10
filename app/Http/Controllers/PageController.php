@@ -13,7 +13,6 @@ class PageController extends Controller
     public function index()
     {
         $locations = Location::latest()->filter()->get();
-
         return view('welcome', ['locations' => $locations,  'tags' => Tag::get() ]);
     }
 

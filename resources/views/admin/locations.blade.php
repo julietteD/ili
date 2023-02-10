@@ -27,6 +27,7 @@
 			@foreach($locations as $location)
 				<tr>
 					<th scope="row">{{ $location->name }}</th>
+					<td>{{ $location->status == 1 ? 'visible' : 'caché' }}</td>
 					<td class="mainActions">
 						<a class="action btn btn-info" href="{{ route('admin.locations.edit', ['id' => $location->id ])}}">Edit</a>
 						<a class="action btn btn-danger delete" onclick="return warning()" href="{{ route('admin.locations.delete', [ 'id' => $location['id']])}}">Delete</a>

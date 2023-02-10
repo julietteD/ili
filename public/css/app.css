@@ -4,11 +4,15 @@
     border: none;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
+    color: #000;
 }
 
 header {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8)
+    padding: 20px;
+    position: fixed;
+    background-color: rgb(249 54 16 / 89%);
+    top: 0;
+    width: 100%;
 }
 
 #grid {
@@ -49,6 +53,7 @@ header {
 
 aside {
     padding: 50px;
+    padding-top: 100px;
     width: 50%;
     height: 100vh;
     overflow-y: scroll;
@@ -58,18 +63,76 @@ aside li {
     margin-bottom: 10px;
 }
 
-aside li.active {
-    background-color: yellow;
+aside li.active a {
+    background-color: #ffed51e3;
+    text-decoration: none;
+    padding: 4px;
 }
 
 main {
-    background-color: aliceblue;
+    background-color: #fff;
     width: 50%;
+    overflow: hidden;
     display: flex;
     height: 100vh;
+    padding: 60px 0 0 0px;
     flex-direction: column;
+    box-shadow: -3px 15px 19px #4b515f5c;
+}
+
+main .text {
+    padding: 30px 0 0 30px;
 }
 
 .pageColumns {
     display: flex;
+}
+
+.tag {
+    font-size: 13px;
+    background-color: #d0ffff;
+    margin: 3px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 2px 4px;
+}
+
+#searchForm {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.allFilters {
+    margin-bottom: 20px;
+    margin-left: -10px;
+}
+
+#ixellesMap {
+    position: absolute;
+    width: 50%;
+    top: 60px;
+    overflow: scroll;
+    height: calc( 100vh - 60px);
+}
+
+#ixellesMap>div {
+    display: block;
+    width: 290%;
+}
+
+#ixellesMap>div img {
+    width: 100%;
+    display: block;
+    opacity: 0.5;
+}
+
+aside {
+    position: relative;
+}
+
+#switchView {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
 }

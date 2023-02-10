@@ -22,6 +22,8 @@ class Location extends Model
         if(request('search')){
             $query->where('name','like','%'.request('search').'%');
         }
+        $query->where('status',1);
+
     }
 
     public function saveTags(string $tags){

@@ -39,5 +39,7 @@
      
         {{ $slot }}
     </div>
-    </body>
+    <script src="{{ asset('js/mais.js') }}"> </script>.  
+</body>
+
 </html>

@@ -29,16 +29,40 @@
 				</fieldset>
 
 
+
+				<fieldset>
+					<div class="form-group">
+						<label>status (1 /  afficher  - 0 / draft)</label>
+						<input type="text" class="form-control" name="status" value="@if(!empty($location->status)){{$location->status}}@endif" >
+					</div>
+
+				
+
+				
+				</fieldset>
+
+				<div class="mb-3">
+                <label class="form-label" for="inputImage">Image:</label>
+                <input
+                    type="file"
+                    name="image"
+                    id="inputImage"
+                    class="form-control @error('image') is-invalid @enderror">
+					@if(!empty($location->path)){{$location->path}}@endif
+                @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
 				<div class="form-group">
 						<label>tags</label>
-						<input type="text"  class="form-control" name="tags" value="@foreach($location -> tags as $tag){{ $tag->title }} @endforeach" >
+						<input type="text"  class="form-control" name="tags" value="@if(!empty($location->tags)) @foreach($location -> tags as $tag){{ $tag->title }} @endforeach @endif" >
 					</div>
 
 				
 			
 				
 						
-<fieldset>
+			<fieldset>
 						<div class="form-group">
 									<label>Contenu</label>
 									<textarea class="summernote form-control" name="body">

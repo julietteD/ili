@@ -27,6 +27,8 @@ class AdminController extends Controller
       $location = Location::where('id', $id )->first();
 
       return view('admin.locations.edit', ['location' => $location]);
+
+
   }
   
   public function deleteLocation( $id = null)
@@ -88,6 +90,16 @@ class AdminController extends Controller
           $location = new Location();
       }
       
+
+      $validatedData = $request->validate([
+        'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+       ]);
+      
+      if($request->file('image') ){  $path = $request->file('image')->store('image', 'public');
+
+       $location->path = $path;}
+   
+
       /*$deletePicture = $request->input('deletepict');
       if($deletePicture=='oui'){$new->banner =''; }
       else{ 
@@ -117,14 +129,13 @@ class AdminController extends Controller
       }*/
       
       $location->name = $request->input('name'); 
+      $location->status = $request->input('status'); 
       $location->description = $request->input('description');    
       $location->saveTags($request->input('tags'));
       $location->slug = Str::slug($request->input('name'));
 
 
       $location->save();
-
-
       Cache::flush();
       return redirect()->route('admin.locations');
   }
