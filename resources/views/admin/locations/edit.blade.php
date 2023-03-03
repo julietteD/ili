@@ -43,7 +43,7 @@
         <label>Rebond</label>
         <select name="location_id">
         @foreach($locations as $rebond)
-            <option value="{{ $rebond->id }}" @if($location->location_id==$rebond->id)  selected @endif>
+            <option value="{{ $rebond->id }}" @if($location && $location->location_id==$rebond->id)  selected @endif>
                 {{ $rebond->name }}
             </option>
         @endforeach
