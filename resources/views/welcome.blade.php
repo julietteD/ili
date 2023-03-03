@@ -10,9 +10,12 @@
  
 
     <aside>
-        <div id="switchView">{{ dd($article) }}
+        <div id="switchView">
+            @if($article)
             <a href="{{ route('welcome',[ $article->slug, $activeTag, 'map']) }}" class="actionMap">Map</a>
             <a href="{{ route('welcome',[ $article->slug, $activeTag, 'list']) }}" class="actionList">Liste</a>
+          @endif
+
         </div>
         <div id="ixellesMap"> 
         <div>
