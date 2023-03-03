@@ -44,6 +44,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('tags/edit/{id}', [AdminController::class, 'editTag'])->name('admin.tags.edit');
     Route::post('tags/edit', [AdminController::class, 'editTagAction'])->name('admin.tags.edit.action');
     Route::get('map', [AdminController::class, 'map'])->name('admin.map');
+    Route::post('map', [AdminController::class, 'editMapAction'])->name('admin.map.edit.action');
 
 
 });

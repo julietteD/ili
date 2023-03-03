@@ -110,6 +110,23 @@ class AdminController extends Controller
       Cache::flush();
       return redirect()->route('admin.locations');
   }
+
+  public function editMapAction(Request $request)
+  {
+      
+    
+      
+      $validatedData = $request->validate([
+        'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+       ]);
+      
+      if($request->file('image') ){  $path = $request->file('image')->storeAs('image', 'map.svg', 'public');
+
+     }
+      
+    
+      return redirect()->route('admin.map');
+  }
   
 
 
