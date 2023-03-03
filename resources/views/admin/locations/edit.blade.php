@@ -56,8 +56,8 @@
     <div class="form-group">
         <label>Status</label>
         <select name="status">
-            <option value="0" @if($location->status==0) selected @endif>Draft</option>
-            <option value="1" @if($location->status==1) selected @endif>Publié</option>
+            <option value="0" @if($location && $location->status==0) selected @endif>Draft</option>
+            <option value="1" @if($location && $location->status==1) selected @endif>Publié</option>
         </select>
     </div>
 </fieldset>
