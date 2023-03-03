@@ -10,7 +10,7 @@
  
 
     <aside>
-        <div id="switchView">
+        <div id="switchView">{{ dd($article) }}
             <a href="{{ route('welcome',[ $article->slug, $activeTag, 'map']) }}" class="actionMap">Map</a>
             <a href="{{ route('welcome',[ $article->slug, $activeTag, 'list']) }}" class="actionList">Liste</a>
         </div>
