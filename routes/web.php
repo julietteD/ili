@@ -17,9 +17,6 @@ use App\Http\Controllers\AdminController;
 */
 
 
-Route::get('/', [PageController::class, 'index'])->name('welcome');
-Route::get('tags/{id}', [PageController::class, 'tags'])->name('tags');
-Route::get('detail/{id}', [PageController::class, 'detail'])->name('detail');
 
 
 Route::get('/admin', function () {
@@ -43,7 +40,14 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::post('locations/edit', [AdminController::class, 'editLocationAction'])->name('admin.locations.edit.action');
     Route::get('deletetags/{id}', [AdminController::class, 'deletetags'])->name('admin.deletetags');
     Route::get('deletealltags', [AdminController::class, 'deletealltags'])->name('admin.deletealltags');
+    Route::get('tags', [AdminController::class, 'tags'])->name('admin.tags');
+    Route::get('tags/edit/{id}', [AdminController::class, 'editTag'])->name('admin.tags.edit');
+    Route::post('tags/edit', [AdminController::class, 'editTagAction'])->name('admin.tags.edit.action');
+    Route::get('map', [AdminController::class, 'map'])->name('admin.map');
+
 
 });
-
 require __DIR__.'/auth.php';
+Route::get('/{location_id?}/{id?}/{view?}', [PageController::class, 'index'])->name('welcome');
+
+

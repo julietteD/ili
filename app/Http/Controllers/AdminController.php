@@ -24,9 +24,11 @@ class AdminController extends Controller
   
     public function editLocation($id = null)
   {
+      $locations = Location::all();
+      $tags = Tag::all();
       $location = Location::where('id', $id )->first();
 
-      return view('admin.locations.edit', ['location' => $location]);
+      return view('admin.locations.edit', ['location' => $location, 'locations' => $locations, 'tags' => $tags]);
 
 
   }
@@ -72,9 +74,7 @@ class AdminController extends Controller
       }
     
     }
-    return 'done';
-     
-    
+    return 'done'; 
      
   }
   
@@ -90,7 +90,6 @@ class AdminController extends Controller
           $location = new Location();
       }
       
-
       $validatedData = $request->validate([
         'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
        ]);
@@ -98,47 +97,60 @@ class AdminController extends Controller
       if($request->file('image') ){  $path = $request->file('image')->store('image', 'public');
 
        $location->path = $path;}
-   
-
-      /*$deletePicture = $request->input('deletepict');
-      if($deletePicture=='oui'){$new->banner =''; }
-      else{ 
-          $banner = $request->file('banner');
-          if ($banner) {
-              $pictName=md5(time());
-               Image::make($banner->getRealPath())->fit(1000, 400)->save(public_path('img/news/'.$pictName.'_banner.jpg'));
-              $imagePath =  $pictName.'_banner.jpg';
-              $new->banner = $imagePath;
-          }
-      }
-      
-          
-
-
-      $thumb = $request->file('thumb');
-      if ($thumb) {
-          $pictName=md5(time());
-           Image::make($thumb->getRealPath())->fit(800, 600)->save(public_path('img/news/'.$pictName.'thumb.jpg'));
-           Image::make($thumb->getRealPath())->fit(650, 700)->save(public_path('img/news/'.$pictName.'hg.jpg'));
-
-           $imagePath =  $pictName.'thumb.jpg';
-           $imagePathhg =  $pictName.'hg.jpg';
-
-          $new->thumb = $imagePath;
-          $new->thumbhg = $imagePathhg;
-      }*/
       
       $location->name = $request->input('name'); 
+      $location->location_id = $request->input('location_id'); 
       $location->status = $request->input('status'); 
       $location->description = $request->input('description');    
-      $location->saveTags($request->input('tags'));
+      if($request->input('tags')){  $location->saveTags($request->input('tags'));}
       $location->slug = Str::slug($request->input('name'));
-
-
+      $location->coordX = $request->input('coordX'); 
+      $location->coordY = $request->input('coordY'); 
       $location->save();
       Cache::flush();
       return redirect()->route('admin.locations');
   }
   
+
+
+  public function tags()
+  {
+      $tags = Tag::all();
+      return view('admin.tags', ['tags' => $tags]);
+  }
+
+  public function map()
+  {
+      return view('admin.map');
+  }
+
+
+  public function editTag($id = null)
+  {
+      $tag = Tag::where('id', $id )->first();
+      return view('admin.tags.edit', ['tag' => $tag]);
+
+  }
+
+  public function editTagAction(Request $request)
+  {
+      
+      $newId = $request->input('id');
+      $tag = false;
+
+      if ($newId) {
+          $tag = Tag::where('id', $newId)->first();
+      }
+      if (!$tag) {
+          $tag = new Tag();
+      }
+      
+      $tag->title = $request->input('title'); 
+     
+      $tag->save();
+      Cache::flush();
+      return redirect()->route('admin.tags');
+  }
+
 
 }

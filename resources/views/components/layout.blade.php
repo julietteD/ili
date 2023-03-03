@@ -13,7 +13,7 @@
     
       
     </head>
-    <body>
+    <body class="@if($view=='list') listView  @else  mapView  @endif">
     <div id="grid">
       <ul>
     <script>  
@@ -33,13 +33,13 @@
 </div>
       <div id="mainContent"> 
         <header>
-            <a href="/">I loooove Ixelles</a>
+            <a href="{{ route('welcome') }}">I loooove Ixelles</a>
             <a href="instagram">Insta</a>
         </header>
      
         {{ $slot }}
     </div>
-    <script src="{{ asset('js/mais.js') }}"> </script>.  
+    <script src="{{ asset('js/main.js') }}"> </script>.  
 </body>
 
 </html>

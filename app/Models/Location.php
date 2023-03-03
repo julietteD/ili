@@ -17,6 +17,12 @@ class Location extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function location(){
+         
+      return $this->BelongsTo(Location::class);
+     
+    }
+
     public function scopeFilter($query)
     {
         if(request('search')){
@@ -30,15 +36,17 @@ class Location extends Model
         $tags = array_unique(array_map(function($item){
             return trim($item);
         },explode(',', $tags)));
-        $persisted_tags = Tag::whereIn('title', $tags)->get();
-        $tags_to_create = array_diff($tags, $persisted_tags->pluck('title')->all());
-        $tags_to_create= array_map(function($tag){
+
+            $persisted_tags = Tag::whereIn('title', $tags)->get();
+            $tags_to_create = array_diff($tags, $persisted_tags->pluck('title')->all());
+            $tags_to_create= array_map(function($tag){
             return ['title' => $tag, 'slug'=>Str::slug($tag)];
         }, $tags_to_create);
-        $created_tags = $this->tags()->createMany($tags_to_create);
-        $persisted_tags = $persisted_tags->merge($created_tags);
-        $this->tags()->sync($persisted_tags);
-     }
+        
+            $created_tags = $this->tags()->createMany($tags_to_create);
+            $persisted_tags = $persisted_tags->merge($created_tags);
+            $this->tags()->sync($persisted_tags);
+        }
 }
    
 

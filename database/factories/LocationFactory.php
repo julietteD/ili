@@ -18,6 +18,7 @@ class LocationFactory extends Factory
     {
         return [
             'name' => fake()->words(3, true),
+            'slug' => fake()->words(1, true),
             'address' => fake()->address(),
             'description' => fake()->sentence(),
         ];

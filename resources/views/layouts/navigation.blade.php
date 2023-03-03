@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('admin.locations')" :active="request()->routeIs('admin.locations')">
                         {{ __('Locations') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.tags')" :active="request()->routeIs('admin.tags')">
+                        {{ __('Tags') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.map')" :active="request()->routeIs('admin.map')">
+                        {{ __('Map') }}
+                    </x-nav-link>
                 </div>
             </div>
 

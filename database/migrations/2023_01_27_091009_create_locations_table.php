@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->boolean('status')->default(0);
             $table->string('address')->nullable();
+            $table->integer('location_id')->nullable();
             $table->string('path')->nullable();
             $table->string('description')->nullable();
+            $table->integer('coordX')->nullable();
+            $table->integer('coordY')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
         });

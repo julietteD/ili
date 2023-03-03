@@ -13,6 +13,7 @@ header {
     background-color: rgb(249 54 16 / 89%);
     top: 0;
     width: 100%;
+    z-index: 10;
 }
 
 #grid {
@@ -34,7 +35,7 @@ header {
     left: 0;
     width: 1px;
     height: 100vh;
-    background-color: aquamarine;
+    background-color: rgba(127, 255, 212, 0.5);
 }
 
 #grid li:nth-child(odd) {
@@ -43,7 +44,7 @@ header {
     left: 0;
     width: 100vw;
     height: 1px;
-    background-color: aquamarine;
+    background-color: rgba(127, 255, 212, 0.5);
 }
 
 #mainContent {
@@ -97,6 +98,10 @@ main .text {
     padding: 2px 4px;
 }
 
+.tag.active {
+    background-color: #89ffff;
+}
+
 #searchForm {
     position: fixed;
     bottom: 20px;
@@ -110,7 +115,7 @@ main .text {
 
 #ixellesMap {
     position: absolute;
-    width: 50%;
+    width: 50vw;
     top: 60px;
     overflow: scroll;
     height: calc( 100vh - 60px);
@@ -118,7 +123,22 @@ main .text {
 
 #ixellesMap>div {
     display: block;
-    width: 290%;
+    width: 500%;
+    position: relative;
+}
+
+#ixellesMap .dot {
+    position: absolute;
+    top: 0
+}
+
+#ixellesMap .dot:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: aquamarine;
+    border-radius: 50%;
 }
 
 #ixellesMap>div img {
@@ -135,4 +155,80 @@ aside {
     position: absolute;
     bottom: 40px;
     right: 30px;
+    z-index: 9;
+}
+
+#locationsList {
+    position: absolute;
+    left: 0;
+    width: 50vw;
+    padding: 0 50px;
+}
+
+.listView #ixellesMap {
+    left: -50vw;
+}
+
+.listView #locationsList {
+    left: 0
+}
+
+.mapView #ixellesMap {
+    left: 0;
+}
+
+.mapView #locationsList {
+    left: -50vw;
+}
+
+.specialLink {
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    text-align: right;
+}
+
+.blablacontent {
+    background-color: #fff;
+    border: 1px solid grey;
+    padding: 10px;
+    position: absolute;
+    bottom: 6%;
+    right: 3%;
+    min-width: 290px;
+    min-height: 150px;
+    box-shadow: 2px 2px 42px #eee;
+    text-align: left;
+}
+
+.close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:before,
+.close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
 }
