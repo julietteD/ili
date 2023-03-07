@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Visit Ixelles</title>
-
+        <title>I LOVE IXELLES</title>
+        <link rel="shortcut icon" href="{{ asset('/img/coeur.png') }}" type="image/x-icon">
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css"   href="{{ asset('/css/app.css') }}">
@@ -34,7 +34,7 @@
       <div id="mainContent"> 
         <header>
             <a href="{{ route('welcome') }}">I loooove Ixelles</a>
-            <a href="instagram">Insta</a>
+            <a class="instalink" href="instagram">Insta</a>
         </header>
      
         {{ $slot }}
