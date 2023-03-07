@@ -42,6 +42,9 @@
     <div class="form-group">
         <label>Rebond</label>
         <select name="location_id">
+        <option value="0" @if($location && $location->location_id==0)  selected @endif>
+               Pas de rebond
+            </option>
         @foreach($locations as $rebond)
             <option value="{{ $rebond->id }}" @if($location && $location->location_id==$rebond->id)  selected @endif>
                 {{ $rebond->name }}

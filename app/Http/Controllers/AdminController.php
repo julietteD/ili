@@ -99,7 +99,9 @@ class AdminController extends Controller
        $location->path = $path;}
       
       $location->name = $request->input('name'); 
+      if($location->location_id!=0){
       $location->location_id = $request->input('location_id'); 
+    }
       $location->status = $request->input('status'); 
       $location->description = $request->input('description');    
       if($request->input('tags')){  $location->saveTags($request->input('tags'));}
