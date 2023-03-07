@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="{{ asset('/img/coeur.png') }}" type="image/x-icon">
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css"   href="{{ asset('/css/app.css') }}">
+        <link rel="stylesheet" type="text/css"   href="{{ asset('/css/app.css?v=2') }}">
         <!-- Styles -->
     
       
